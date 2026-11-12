@@ -72,13 +72,24 @@ nav a.lk:hover::after{width:100%}
 .hero-facts div+div{padding-left:22px;border-left:1px solid var(--line)}
 .hero-facts strong{display:block;font-family:var(--cond);font-weight:800;font-size:2.4rem;line-height:1;color:var(--ink)}
 .hero-facts span{color:var(--steel)}
-.hero-media{position:relative;overflow:hidden;background:var(--blue-ink)}
-.hero-media img{width:100%;height:100%;object-fit:cover;filter:saturate(1.05) contrast(1.05)}
-.hero-media::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(3,5,63,0) 45%,rgba(3,5,63,.85));z-index:1}
-.hero-media .tag{position:absolute;left:28px;right:28px;bottom:28px;z-index:2;color:#fff;display:flex;justify-content:space-between;align-items:flex-end;gap:20px}
-.hero-media .tag p{font-family:var(--cond);font-size:1.7rem;font-weight:600;line-height:1.1;max-width:300px;text-transform:uppercase}
-.hero-media .tag .mono{color:var(--spray)}
-.hero-cut{position:absolute;left:-1px;top:0;bottom:0;width:90px;z-index:2;pointer-events:none}
+.hero-media{position:relative;background:var(--paper);padding:44px 48px 44px 76px;display:flex;border-left:1px solid var(--line)}
+.hm-frame{position:relative;flex:1;min-height:0}
+.hm-frame::before{content:"";position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;background:var(--blue)}
+.hm-frame::after{content:"";position:absolute;top:22px;left:22px;right:-22px;bottom:-22px;background-image:repeating-linear-gradient(135deg,rgba(255,255,255,.12) 0 2px,transparent 2px 12px)}
+.hm-frame img{position:relative;z-index:1;width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.hm-rail{position:absolute;left:24px;top:44px;height:calc(100% - 420px);min-height:220px;display:flex;justify-content:space-between;writing-mode:vertical-rl;transform:rotate(180deg);color:var(--steel)}
+.hm-rail b{color:var(--blue);font-weight:500}
+.hm-card{position:absolute;z-index:3;left:24px;bottom:64px;width:290px;background:#fff;border:2px solid var(--ink);box-shadow:8px 8px 0 rgba(12,13,20,.12)}
+.hm-card .top{background:var(--ink);color:#fff;padding:9px 16px;display:flex;justify-content:space-between}
+.hm-card .top i{width:8px;height:8px;border-radius:50%;background:#3BD16F;align-self:center;font-style:normal}
+.hm-card h3{font-family:var(--cond);font-weight:700;text-transform:uppercase;font-size:1.45rem;line-height:1.02;padding:14px 16px 10px}
+.hm-card ul{list-style:none;border-top:1px solid var(--line)}
+.hm-card li a{display:flex;justify-content:space-between;padding:9px 16px;font-weight:600;font-size:.9rem;border-bottom:1px solid var(--line)}
+.hm-card li:last-child a{border-bottom:0}
+.hm-card li a:hover{background:var(--blue);color:#fff}
+.hm-psi{position:absolute;z-index:3;top:66px;right:28px;background:var(--blue);color:#fff;padding:12px 16px;font-family:var(--cond);text-transform:uppercase;line-height:1}
+.hm-psi strong{display:block;font-size:2.2rem;font-weight:800}
+.hm-psi span{font-family:var(--mono);font-size:.62rem;letter-spacing:.14em}
 
 /* ---------- section heads ---------- */
 section{position:relative}
@@ -271,8 +282,11 @@ footer li a:hover{color:#fff}
   .util .hide-sm{display:none}
   .hero{grid-template-columns:minmax(0,1fr);max-height:none;min-height:0}
   .hero-copy{padding:56px 4vw 40px}
-  .hero-media{height:420px}
-  .hero-cut{display:none}
+  .hero-media{flex-direction:column;padding:28px 40px 28px 28px;border-left:0;border-top:1px solid var(--line)}
+  .hm-frame{height:440px;flex:none}
+  .hm-rail{display:none}
+  .hm-card{position:relative;left:auto;bottom:auto;width:auto;margin:44px -12px 0 0}
+  .hm-psi{top:46px;right:30px}
   .shead{grid-template-columns:1fr;gap:18px}
   .fleet-top,.unit-grid,.story-grid,.duo-grid,.partner,.quote-grid{grid-template-columns:1fr}
   .fleet-img{height:360px}
@@ -341,16 +355,22 @@ footer li a:hover{color:#fff}
     </div>
     <div class="hero-facts">
       <div><strong>2004</strong><span class="mono">Family owned since</span></div>
-      <div><strong>2500 PSI</strong><span class="mono">Self-contained units</span></div>
+      <div><strong>10+ YRS</strong><span class="mono">Fleet washing</span></div>
       <div><strong>WCB</strong><span class="mono">Licensed &amp; insured</span></div>
     </div>
   </div>
   <div class="hero-media">
-    <svg class="hero-cut" viewBox="0 0 90 100" preserveAspectRatio="none"><polygon points="0,0 90,0 0,100" fill="#fff"/></svg>
-    <img src="images/pressure-washing-siding.jpg" alt="Commercial building siding being pressure washed from a lift">
-    <div class="tag">
-      <p>Residential &amp; commercial pressure washing</p>
-      <span class="mono">Mobile &middot; Calgary</span>
+    <div class="hm-rail mono"><span><b>01</b> Residential</span><span><b>02</b> Commercial</span><span><b>03</b> Fleet</span></div>
+    <div class="hm-frame"><img src="images/hero-pressure-washing.jpg" alt="Technician in a lift pressure washing commercial building siding"></div>
+    <div class="hm-psi"><strong>2500</strong><span>PSI washers</span></div>
+    <div class="hm-card">
+      <div class="top mono"><span>Calgary &middot; Mobile</span><i></i></div>
+      <h3>Residential &amp; commercial pressure washing</h3>
+      <ul>
+        <li><a href="#services">Pressure Washing <span>&rarr;</span></a></li>
+        <li><a href="#fleet">Fleet Washing <span>&rarr;</span></a></li>
+        <li><a href="#snow">Snow Removal <span>&rarr;</span></a></li>
+      </ul>
     </div>
   </div>
 </section>
@@ -373,7 +393,7 @@ footer li a:hover{color:#fff}
           <p>Mobile commercial and residential pressure washing using high-pressure equipment, including high-pressure building cleaning.</p>
           <div class="chips"><span>Homes</span><span>Commercial buildings</span><span>Siding</span><span>Walkways</span></div>
         </div>
-        <div class="pic"><img src="images/pressure-washing.jpg" alt="Crew member pressure washing a walkway"><a href="#quote" data-svc="Pressure Washing">Quote this &rarr;</a></div>
+        <div class="pic"><img src="images/residential-pressure-washing.jpg" alt="Pressure washing a residential patio"><a href="#quote" data-svc="Pressure Washing">Quote this &rarr;</a></div>
       </div>
       <div class="svc rv">
         <span class="n">02</span>
@@ -382,7 +402,7 @@ footer li a:hover{color:#fff}
           <p>Over a decade washing tractors, trailers, 5 tons, vans, garbage trucks, dump trucks, converters, cars and trucks. We also specialize in car wash bays.</p>
           <div class="chips"><span>Tractors &amp; trailers</span><span>Reefers</span><span>Car wash bays</span></div>
         </div>
-        <div class="pic"><img src="images/pressure-washing-truck.jpg" alt="Semi trailer inside a wash bay"><a href="#quote" data-svc="Fleet Washing">Quote this &rarr;</a></div>
+        <div class="pic"><img src="images/fleet-wash-bay.jpg" alt="Semi truck and reefer trailer inside a wash bay"><a href="#quote" data-svc="Fleet Washing">Quote this &rarr;</a></div>
       </div>
       <div class="svc rv">
         <span class="n">03</span>
@@ -391,7 +411,7 @@ footer li a:hover{color:#fff}
           <p>Self-contained units carry their own water tanks, compressors, heaters and 2500 psi washers, with a mobile detail unit for tractor interiors.</p>
           <div class="chips"><span>On-site</span><span>Recovery systems</span><span>Detail unit</span></div>
         </div>
-        <div class="pic"><img src="images/pressure-washing-2.jpg" alt="Pressure washing a park patio on site"><a href="#quote" data-svc="Mobile Washing">Quote this &rarr;</a></div>
+        <div class="pic"><img src="images/mobile-washing-patio.jpg" alt="Mobile pressure washing a park picnic area"><a href="#quote" data-svc="Mobile Washing">Quote this &rarr;</a></div>
       </div>
       <div class="svc rv">
         <span class="n">04</span>
@@ -400,7 +420,7 @@ footer li a:hover{color:#fff}
           <p>Snow and ice clearing for large industrial lots, schools, hospitals, strip malls, condominiums and private residences at competitive prices.</p>
           <div class="chips"><span>Snow &amp; ice</span><span>Commercial lots</span><span>Residential</span></div>
         </div>
-        <div class="pic"><img src="images/truck-ploughing-snow.jpg" alt="Pickup truck ploughing snow"><a href="#quote" data-svc="Snow Removal">Quote this &rarr;</a></div>
+        <div class="pic"><img src="images/snow-removal-band.jpg" alt="Pickup truck ploughing a commercial lot"><a href="#quote" data-svc="Snow Removal">Quote this &rarr;</a></div>
       </div>
     </div>
   </div>
@@ -410,8 +430,8 @@ footer li a:hover{color:#fff}
 <section class="fleet" id="fleet">
   <div class="fleet-top">
     <div class="fleet-img">
-      <img src="images/pressure-washing-truck.jpg" alt="Trailer in a truck wash bay">
-      <div class="stamp"><strong>10+</strong>Years of fleet washing</div>
+      <img src="images/fleet-wash-bay.jpg" alt="Semi truck in a fleet wash bay">
+      <div class="stamp"><strong>CFIA</strong>Approved products for reefers</div>
     </div>
     <div class="fleet-copy rv">
       <span class="mono">Fleet Washing</span>
@@ -494,7 +514,7 @@ footer li a:hover{color:#fff}
 
 <!-- SNOW -->
 <section class="snow" id="snow">
-  <img src="images/truck-ploughing-snow.jpg" alt="Truck ploughing snow in a lot">
+  <img src="images/snow-removal-band.jpg" alt="Truck ploughing snow in a commercial lot">
   <div class="wrap rv">
     <span class="mono">Property Services &middot; Snow Removal</span>
     <h2>When the snow<br>hits Calgary</h2>
@@ -514,12 +534,12 @@ footer li a:hover{color:#fff}
       <div><h2>On the job</h2></div>
     </div>
     <div class="gal rv">
-      <figure class="g1"><img src="images/pressure-washing-siding.jpg" alt="Building siding pressure washing"><figcaption>Building cleaning</figcaption></figure>
-      <figure class="g2"><img src="images/pressure-washing-2.jpg" alt="Patio pressure washing"><figcaption>Mobile washing</figcaption></figure>
-      <figure class="g3"><img src="images/pressure-washing-truck.jpg" alt="Trailer wash bay"><figcaption>Fleet washing</figcaption></figure>
-      <figure class="g4"><img src="images/pressure-washing.jpg" alt="Walkway pressure washing"><figcaption>Walkways</figcaption></figure>
-      <figure class="g4"><img src="images/truck-ploughing-snow.jpg" alt="Snow ploughing"><figcaption>Snow removal</figcaption></figure>
-      <figure class="g4"><img src="images/window-washing.jpg" alt="Window washing squeegee"><figcaption>Window washing</figcaption></figure>
+      <figure class="g1"><img src="images/hero-pressure-washing.jpg" alt="Building siding pressure washing" style="object-position:center 35%"><figcaption>Building cleaning</figcaption></figure>
+      <figure class="g2"><img src="images/residential-pressure-washing.jpg" alt="Residential patio pressure washing"><figcaption>Residential</figcaption></figure>
+      <figure class="g3"><img src="images/fleet-wash-bay.jpg" alt="Fleet wash bay"><figcaption>Fleet washing</figcaption></figure>
+      <figure class="g4"><img src="images/commercial-walkway-washing.jpg" alt="Commercial walkway pressure washing"><figcaption>Commercial</figcaption></figure>
+      <figure class="g4"><img src="images/mobile-washing-patio.jpg" alt="Mobile washing at a park"><figcaption>Mobile washing</figcaption></figure>
+      <figure class="g4"><img src="images/window-washing-new.jpg" alt="Window washing squeegee"><figcaption>Window washing</figcaption></figure>
     </div>
   </div>
 </section>
@@ -528,7 +548,7 @@ footer li a:hover{color:#fff}
 <section class="duo">
   <div class="wrap duo-grid">
     <div class="partner rv">
-      <div class="pimg"><img src="images/window-washing.jpg" alt="Squeegee cleaning a window"></div>
+      <div class="pimg"><img src="images/window-washing-new.jpg" alt="Squeegee cleaning a window"></div>
       <div class="pcopy">
         <div class="plogo"><img src="images/hardings-window-washing-logo.png" alt="Harding's Window Washing logo"></div>
         <span class="mono">Partnership</span>
